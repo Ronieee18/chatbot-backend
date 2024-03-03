@@ -31,8 +31,10 @@ export const userSignup=asyncHandler(async (req,res)=>{
         const expires=new Date();
         expires.setDate(expires.getDate()+7);
         res.clearCookie(COOKIE_NAME,{
+            
             path:"/",
             httpOnly:true,
+            sameSite: "None",
             signed:true,
         })
         const token=createToken(user._id.toString(),user.email,"7d");
@@ -40,6 +42,7 @@ export const userSignup=asyncHandler(async (req,res)=>{
         res.cookie(COOKIE_NAME,token,{
             path:"/",
             expires,
+            sameSite: "None",
             httpOnly:true,
             signed:true,
 
@@ -66,6 +69,7 @@ export const userLogin=asyncHandler(async (req,res)=>{
         res.clearCookie(COOKIE_NAME,{
             path:"/",
             expires,
+            sameSite: "None",
             httpOnly:true,
             signed:true,
         })
@@ -75,6 +79,7 @@ export const userLogin=asyncHandler(async (req,res)=>{
             path:"/",
             expires,
             httpOnly:true,
+            sameSite: "None",
             signed:true,
 
         })
@@ -120,6 +125,7 @@ export const logoutUser=asyncHandler(async (req,res)=>{
         res.clearCookie(COOKIE_NAME,{
             path:"/",
             httpOnly:true,
+            sameSite: "None",
             signed:true,
         })
         return res.status(200).json({message:"logout successfull"})
