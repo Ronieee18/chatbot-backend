@@ -36,6 +36,7 @@ export const userSignup=asyncHandler(async (req,res)=>{
             httpOnly:true,
             sameSite: "None",
             signed:true,
+            secure: true,
         })
         const token=createToken(user._id.toString(),user.email,"7d");
         
@@ -45,6 +46,7 @@ export const userSignup=asyncHandler(async (req,res)=>{
             sameSite: "None",
             httpOnly:true,
             signed:true,
+            secure: true,
 
         })
         return res.status(201).json({message:"ok",user})
@@ -72,6 +74,7 @@ export const userLogin=asyncHandler(async (req,res)=>{
             sameSite: "None",
             httpOnly:true,
             signed:true,
+            secure: true,
         })
         const token=createToken(user._id.toString(),user.email,"7d");
         
@@ -81,6 +84,7 @@ export const userLogin=asyncHandler(async (req,res)=>{
             httpOnly:true,
             sameSite: "None",
             signed:true,
+            secure: true,
 
         })
         return res.status(200).json({message:"ok",user})
@@ -126,6 +130,7 @@ export const logoutUser=asyncHandler(async (req,res)=>{
             path:"/",
             httpOnly:true,
             sameSite: "None",
+            secure: true,
             signed:true,
         })
         return res.status(200).json({message:"logout successfull"})
